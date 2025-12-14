@@ -1,51 +1,66 @@
-# PDF表格提取程序
+# PDF表格提取工具
 
-这个程序用于从PDF文件中提取特定表格数据。
+## 项目结构
 
-## 功能
-
-1. **自动扫描当前目录下的所有PDF文件**
-2. **识别包含特定表头的表格**：
-   - Run No.
-   - Particle Size(µm)
-   - Cumulative Count
-   - Differential Count
-   - Cumulative Counts/mL
-   - Differential Counts/mL
-3. **提取指定列的第21-25行数据**：
-   - Particle Size(µm)
-   - Cumulative Counts/mL
-4. **将结果保存到Excel文件**
-
-## 安装依赖
-
-```bash
-pip install -r requirements.txt
+```
+readPDF/
+├── src/                    # 源代码目录
+│   ├── extract_pdf_tables.py    # 主程序源代码
+│   ├── build_exe.py             # 打包脚本
+│   └── requirements.txt         # Python依赖包
+│
+├── release/                # 发布文件目录（可分发）
+│   ├── PDF表格提取工具.exe      # 可执行程序
+│   └── 使用说明.txt             # 用户使用说明
+│
+├── docs/                   # 文档目录
+│   ├── README.md           # 开发文档
+│   ├── 打包说明.md         # 打包说明
+│   └── 使用说明.txt        # 使用说明（副本）
+│
+├── build/                  # 构建临时文件（可删除）
+├── dist/                   # PyInstaller输出（可删除）
+├── INPUT/                  # 测试PDF文件（开发用）
+└── README.md              # 本文件
 ```
 
-## 使用方法
+## 快速开始
 
-1. 将PDF文件放在程序所在目录
+### 开发环境
+
+1. 安装依赖：
+   ```bash
+   cd src
+   pip install -r requirements.txt
+   ```
+
 2. 运行程序：
-```bash
-python extract_pdf_tables.py
-```
+   ```bash
+   python extract_pdf_tables.py
+   ```
 
-## 输出
+3. 打包程序：
+   ```bash
+   python build_exe.py
+   ```
 
-- 程序会在控制台显示提取的数据
-- 所有结果会保存到 `提取结果.xlsx` 文件中，每个PDF文件对应一个工作表
+### 分发程序
 
-## 示例输出
+从 `release/` 目录获取以下文件分发给用户：
+- `PDF表格提取工具.exe`
+- `使用说明.txt`
 
-对于文件 `HLX05-OT3-251203-U-L-25-1D.pdf`，提取的数据格式如下：
+## 目录说明
 
-| Particle Size(µm) | Cumulative Counts/mL |
-|-------------------|---------------------|
-| 2.000             | 8.33                |
-| 5.000             | 1.00                |
-| 10.000            | 0.00                |
-| 25.000            | 0.00                |
-| 50.000            | 0.00                |
+- **src/**: 源代码和开发相关文件
+- **release/**: 可分发给用户的文件
+- **docs/**: 项目文档
+- **build/**: PyInstaller构建临时文件（可删除）
+- **dist/**: PyInstaller输出目录（可删除）
+- **INPUT/**: 测试用的PDF文件（开发用）
 
+## 注意事项
 
+- `build/` 和 `dist/` 目录是打包时自动生成的，可以删除
+- 打包后，exe文件会自动复制到 `release/` 目录
+- 源代码修改后需要重新打包才能更新exe文件

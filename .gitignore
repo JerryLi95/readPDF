@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 虚拟环境
+.conda/
+venv/
+env/
+ENV/
+
+# 构建文件
+build/
+dist/
+*.spec
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试文件
+INPUT/
+*.xlsx
+提取结果.xlsx
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.log
+*.tmp
